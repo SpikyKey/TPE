@@ -1,8 +1,8 @@
 #include <iostream>
-#include "Fila.h"
-#include "Lista.h"
-#include "ArbolBinario.h"
-#include "Tests.h"
+#include "../include/Fila.h"
+#include "../include/Lista.h"
+#include "../include/ArbolBinario.h"
+#include "../include/Tests.h"
 
 
 
