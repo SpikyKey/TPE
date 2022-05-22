@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1653232772 source:c:\users\gustavo\documents\dev\tpe\src\arbolbinario.cpp
+	"ArbolBinario.h"
+
+1653232772 c:\users\gustavo\documents\dev\tpe\include\arbolbinario.h
+
+1653232688 source:c:\users\gustavo\documents\dev\tpe\src\fila.cpp
+	"Fila.h"
+
+1653232688 c:\users\gustavo\documents\dev\tpe\include\fila.h
+
+1653232751 source:c:\users\gustavo\documents\dev\tpe\src\lista.cpp
+	"Lista.h"
+
+1653232750 c:\users\gustavo\documents\dev\tpe\include\lista.h
+
