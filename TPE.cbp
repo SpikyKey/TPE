@@ -13,7 +13,6 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -23,7 +22,6 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
-					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -42,9 +40,7 @@
 		<Unit filename="src/ArbolBinario.cpp" />
 		<Unit filename="src/Fila.cpp" />
 		<Unit filename="src/Lista.cpp" />
-		<Unit filename="src/Tests.cpp">
-			<Option compilerVar="CC" />
-		</Unit>
+		<Unit filename="src/Tests.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

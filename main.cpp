@@ -1,16 +1,16 @@
 #include <iostream>
-#include "Tests.h"
+#include "include/Tests.h"
 
 using namespace std;
 
 int main()
 {
-    testsFila();
+    //testsFila();
     testsLista();
-    testsArbolBinario();
+    //testsArbolBinario();
 
 
-    cout << "Las implementaciones pasaron todos los tests!" <<;
+    cout << "Las implementaciones pasaron todos los tests!";
 
 
     return 0;
