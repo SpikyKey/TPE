@@ -10,13 +10,13 @@
 
 1653241932 c:\users\gustavo\documents\dev\tpe\include\fila.h
 
-1653518219 source:c:\users\gustavo\documents\dev\tpe\src\lista.cpp
+1653565232 source:c:\users\gustavo\documents\dev\tpe\src\lista.cpp
 	"../include/Lista.h"
 	<stdlib.h>
 	<assert.h>
 	<iostream>
 
-1653518244 c:\users\gustavo\documents\dev\tpe\include\lista.h
+1653564364 c:\users\gustavo\documents\dev\tpe\include\lista.h
 
 1653248093 source:c:\users\diego\desktop\facultad\proyectos c++\tpe\src\arbolbinario.cpp
 	"../include/ArbolBinario.h"
@@ -56,7 +56,7 @@
 
 1653241932 c:\users\gustavo\documents\dev\tpe\include\tests.h
 
-1653515940 source:c:\users\gustavo\documents\dev\tpe\src\tests.cpp
+1653565248 source:c:\users\gustavo\documents\dev\tpe\src\tests.cpp
 	<iostream>
 	"../include/Fila.h"
 	"../include/Lista.h"

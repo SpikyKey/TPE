@@ -73,13 +73,13 @@ bool recuperaEnOrden(){
 
 bool eliminarDeVaciaEsFalse(){
     Lista* nueva = new Lista;
-    return !nueva->eliminar(32);
+    return !nueva->eliminar(1);
 }
 
 bool eliminarConteniendoUnElementoResultaEnVacia(){
     Lista* nueva = new Lista;
     nueva->agregar(1, -111);
-    nueva->eliminar(-111);
+    nueva->eliminar(1);
     return nueva->vacia();
 }
 
@@ -89,8 +89,26 @@ bool eliminarDecrementaLongitud(){
     nueva->agregar(2, -112);
     nueva->agregar(3, -1);
     nueva->agregar(4, 110);
-    nueva->eliminar(-112);
+    nueva->eliminar(2);
     return nueva->longitud() == 3;
+}
+
+bool agregarFinAgregarAlFinal(){
+    Lista* nueva = new Lista;
+    nueva->agregarFin(356);
+    nueva->agregarFin(2213);
+    nueva->agregarFin(-481);
+    return nueva->recuperar(3) == -481;
+}
+
+bool agregarPrincipioAgregaInicio(){
+    Lista* nueva = new Lista;
+    nueva->agregarPrincipio(111);
+    nueva->agregarPrincipio(222);
+    nueva->agregarPrincipio(-333);
+    return (nueva->recuperar(3) == 111 &&
+            nueva->recuperar(2) == 222 &&
+            nueva->recuperar(1) == -333);
 }
 
 void testsLista(){
@@ -99,13 +117,19 @@ void testsLista(){
     assert(listaContieneTresElementos() == 3);
     //fallaAlAgregarEnPosicionCero();
     //fallaAlAgregarIndiceMayorLongitud();
+
     assert(listaVaciaEsVacia() == true);
     assert(listaNoVaciaEsVacia() == false);
+
     assert(recuperaAgregadoAnterior() == true);
     assert(recuperaEnOrden() == true);
+
     assert(eliminarDeVaciaEsFalse() == true);
     assert(eliminarConteniendoUnElementoResultaEnVacia() == true);
     assert(eliminarDecrementaLongitud() == true);
+
+    assert(agregarFinAgregarAlFinal() == true);
+    assert(agregarPrincipioAgregaInicio() == true);
 }
 
 

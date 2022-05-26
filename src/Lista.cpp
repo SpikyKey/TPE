@@ -72,27 +72,35 @@ int Lista::recuperar(unsigned int posicion){
     return aux->elemento;
 }
 
-bool Lista::eliminarRecursivo(Nodo* & nodo, t_elem elemento){
+
+bool Lista::eliminarRecursivo(Nodo* & nodo, unsigned int posicion){
     if (nodo == NULL)
         return false;
 
-    if (nodo->elemento == elemento){
+    if (posicion == 1){
         Nodo* aux = nodo->siguiente;
         delete nodo;
         nodo = aux;
         return true;
     }
 
-    return eliminarRecursivo(nodo->siguiente, elemento);
+    return eliminarRecursivo(nodo->siguiente, posicion - 1);
 }
 
-bool Lista::eliminar(t_elem elemento){
-    return eliminarRecursivo(primerNodo, elemento);
-
+bool Lista::eliminar(unsigned int posicion){
+        return eliminarRecursivo(primerNodo, posicion);
 }
+
 
 void Lista::agregarFin(t_elem elemento){
-    //agregar(longitud()+1, elemento);
+    agregar(longitud()+1, elemento);
+}
+
+void Lista::agregarPrincipio(t_elem elemento){
+    Nodo* nuevo = new Nodo;
+    nuevo->elemento = elemento;
+    nuevo->siguiente = primerNodo;
+    primerNodo = nuevo;
 }
 
 

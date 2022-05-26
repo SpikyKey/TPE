@@ -27,7 +27,7 @@ class Lista
 
         // si el elemento se pudo eliminar retorna true
         // si el elemento no esta retorna false
-        bool eliminar(t_elem elemento);
+        bool eliminar(unsigned int posicion);
         t_elem recuperar(unsigned int posicion);
 
     private:
@@ -35,7 +35,7 @@ class Lista
         Nodo * primerNodo;
 
         Nodo* agregarRecursivo(Nodo* nodo, unsigned int posicion, t_elem elemento);
-        bool eliminarRecursivo(Nodo* & nodo, t_elem elemento);
+        bool eliminarRecursivo(Nodo* & nodo, unsigned int posicion);
 };
 
 #endif // LISTA_H
