@@ -7,18 +7,24 @@ class Fila
     public:
         Fila();
         virtual ~Fila();
-        void agregar (int elemento);
+        int ultimo();
+        bool vacia();
+        void agrFila (int elemento);
         unsigned int longitud();
         int retirar ();
         int proximoasalir();
-        bool vacia();
+
 
 
 
     private:
-        typedef struct F{
+        typedef struct Nodo{
             int elemento;
-            struct Nodo * siguiente;
-        };
+            struct Nodo* siguiente;
+
+        }Nodo;
+        Nodo* primerNodo;
+
+ };
 
 #endif // FILA_H

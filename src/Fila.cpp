@@ -18,7 +18,7 @@ unsigned int Fila::longitud(){
        return 0;
 
    unsigned int contador = 0;
-   Nodo * aux = primerNodo;
+   Nodo* aux = primerNodo;
    while (aux != NULL){
         contador++;
         aux = aux->siguiente;
@@ -27,26 +27,44 @@ unsigned int Fila::longitud(){
 }
 
 
-void Fila::agrlista(Nodo * nodo,int elementonuevo){
+void Fila::agrFila (int elementonuevo){
+    Nodo* aux;
+    aux= new Nodo;
     aux-> siguiente = primerNodo->siguiente;
     aux-> elemento = primerNodo-> elemento;
     primerNodo->elemento = elementonuevo;
-    segundo-> elemento = aux-> elemento;
-    segundo-> siguiente = aux-> siguiente;
-    primerNodo->siguiente = *segundo;
+    primerNodo->siguiente =aux;
+
     return;
 
    }
 
-void Fila::elemento=ultimo(F){
-        *nodo cursor= primer elemento;
-        if NOT vacia(F)
-            if *cursor->siguiente=NULL
-                return *cursor->elemento
-        else *cursor->siguiente!=NULL
-             cursor->siguiente=*siguiente->siguiente;
-
+int Fila::ultimo(){
+        assert(!vacia());
+        Nodo* cursor= primerNodo;
+            while (cursor->siguiente!=NULL){
+                cursor= cursor->siguiente;
+            }
+            return cursor->elemento;
     }
 
-void Fila::retirar(F){
-         }
+int Fila::retirar(){
+        assert(!vacia());
+            Nodo* cursor= primerNodo;
+            Nodo* anteriorcursor;
+            while (cursor->siguiente!=NULL){
+                anteriorcursor=cursor;
+                cursor= cursor->siguiente;
+            }
+            anteriorcursor->siguiente=NULL;
+            int copia=cursor->elemento;
+            delete cursor;
+            return copia;
+}
+
+bool Fila::vacia(){
+    if (primerNodo==NULL)
+        return true;
+    else
+        return false;
+}
