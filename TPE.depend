@@ -23,9 +23,9 @@
 	"../include/Fila.h"
 	<cstddef>
 
-1653247680 c:\users\diego\desktop\facultad\proyectos c++\tpe\include\fila.h
+1653260322 c:\users\diego\desktop\facultad\proyectos c++\tpe\include\fila.h
 
-1653254730 source:c:\users\diego\desktop\facultad\proyectos c++\tpe\src\lista.cpp
+1653256103 source:c:\users\diego\desktop\facultad\proyectos c++\tpe\src\lista.cpp
 	"../include/Lista.h"
 	<stdlib.h>
 	<assert.h>
