@@ -5,15 +5,7 @@ using namespace std;
 
 int main()
 {
-    //testsFila();
     testsLista();
-    //testsArbolBinario();
-
-
-    cout << "Las implementaciones pasaron todos los tests!";
-
-
+    cout << "Hello world!" << endl;
     return 0;
 }
-
-

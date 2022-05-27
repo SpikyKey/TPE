@@ -4,6 +4,7 @@
 #include "../include/ArbolBinario.h"
 #include "../include/Tests.h"
 #include <assert.h>
+#include <iostream>
 
 unsigned int nuevaListaZeroElementos(){
     Lista * nueva = new Lista;
@@ -130,6 +131,8 @@ void testsLista(){
 
     assert(agregarFinAgregarAlFinal() == true);
     assert(agregarPrincipioAgregaInicio() == true);
+
+    std::cout << "La Lista paso los tests!";
 }
 
 
