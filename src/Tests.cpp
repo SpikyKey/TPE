@@ -132,7 +132,7 @@ void testsLista(){
     assert(agregarFinAgregarAlFinal() == true);
     assert(agregarPrincipioAgregaInicio() == true);
 
-    std::cout << "La Lista paso los tests!";
+    std::cout << "La Lista paso los tests! \n";
 }
 
 

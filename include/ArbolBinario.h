@@ -2,12 +2,18 @@
 #define ARBOLBINARIO_H
 
 
-class ArbolBinario
+template <typename T> class ArbolBinario
 {
     public:
         ArbolBinario();
         virtual ~ArbolBinario();
-
+        void agregar(T elemento);
+        bool pertenece(T elemento);
+        unsigned int cantidad();
+        bool vacio();
+        unsigned int profundidad();
+        Lista<T> listarFrontera();
+        Lista<T> listarElementos();
     protected:
 
     private:
