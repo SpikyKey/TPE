@@ -10,7 +10,7 @@ Arbin<T>::Arbin()
     raiz = NULL;
 }
 
-// complejidad de la función cargarRecursivo T(ln n)
+
 template <typename T>
 void Arbin<T>::cargarRecursivo(NodoArbin*& raiz, T elemento){
     if (raiz == NULL){
@@ -28,14 +28,11 @@ void Arbin<T>::cargarRecursivo(NodoArbin*& raiz, T elemento){
     }
     return;
 }
-
-// complejidad de la función cargar T(ln n)
 template <typename T>
 void Arbin<T>::cargar(T elemento){
     raiz = cargarRecursivo(raiz, elemento);
 }
 
-// complejidad de la función perteneceRecursiva T(ln n)
 template <typename T>
 bool Arbin<T>::perteneceRecursiva(NodoArbin* raiz, T elemento){
     if (raiz == NULL)
@@ -49,19 +46,16 @@ bool Arbin<T>::perteneceRecursiva(NodoArbin* raiz, T elemento){
     return perteneceRecursiva(raiz->hijoder, elemento);
 }
 
-// complejidad de la función pertenece T(ln n)
 template <typename T>
 bool Arbin<T>::pertenece(T elemento){
     return perteneceRecursiva(raiz, elemento);
 }
 
-// complejidad de la función vacio T(1)
 template <typename T>
 bool Arbin<T>::vacio(){
     return raiz == NULL;
  }
 
- // complejidad de la función contarRecursivo T(n)
  template <typename T>
  unsigned int Arbin<T>::contarRecursivo(NodoArbin* raiz){
     if (raiz == NULL)
@@ -69,15 +63,11 @@ bool Arbin<T>::vacio(){
     return 1 + contarRecursivo(raiz->hijoizq) +
                contarRecursivo(raiz->hijoder);
  }
-
- // complejidad de la función cantelementos T(n)
  template <typename T>
  unsigned int  Arbin<T>::cantelmentos(){
     return contarRecursivo(raiz);
  }
 
-
- // complejidad de la función profundidadRecursiva T(n)
 template <typename T>
 unsigned int Arbin<T>::profundidadRecursiva(NodoArbin* raiz){
     if (raiz == NULL)
@@ -95,16 +85,13 @@ unsigned int Arbin<T>::profundidadRecursiva(NodoArbin* raiz){
     return mayor + 1;
 }
 
-
-// complejidad de la función profundidad T(n)
 template <typename T>
 unsigned int Arbin<T>::profundidad (){
     return profundidadRecursiva(raiz);
 }
 
-// complejidad de la función listarFronteraRecursiva T(n)
 template <typename T>
-Lista Arbin<T>::listarFronteraRecursiva(NodoArbin* raiz, Lista frontera){
+Lista<T> Arbin<T>::listarFronteraRecursiva(NodoArbin* raiz, Lista<T> frontera){
     if (raiz->hijoder == NULL &&
         raiz->hijoizq == NULL){
         frontera.agregarPrincipio(raiz->campo);
@@ -117,18 +104,17 @@ Lista Arbin<T>::listarFronteraRecursiva(NodoArbin* raiz, Lista frontera){
         frontera = listarFronteraRecursiva(raiz->hijoder, frontera);
     return frontera;
 }
+
 template <typename T>
-Lista Arbin<T>::listarFrontera (){
-    Lista frontera = new Lista;
+Lista<T> Arbin<T>::listarFrontera (){
+    Lista<T> frontera = new Lista<T>;
     return listarFronteraRecursiva(raiz, frontera);
  }
 
 
  // Lista los nodos del arbol en preorder
- // complejidad de la función listaRacursivo T(n^2)
- // se puede mejorar arreglando el agregarFin de la lista con un arreglo paralelo con se indicó.
  template <typename T>
-void Arbin<T>::listarRecursivo(NodoArbin* raiz, Lista& lista){
+void Arbin<T>::listarRecursivo(NodoArbin* raiz, Lista<T>& lista){
     if (raiz == NULL)
         return;
 
@@ -136,16 +122,13 @@ void Arbin<T>::listarRecursivo(NodoArbin* raiz, Lista& lista){
     listarRecursivo(raiz->hijoizq, lista);
     listarRecursivo(raiz->hijoder, lista);
 }
-
-// complejidad de la función listarArbin T(n^2)
 template <typename T>
-Lista Arbin<T>::listarArbin(){
-    Lista listado = new Lista;
+Lista<T> Arbin<T>::listarArbin(){
+    Lista<T> listado = new Lista<T>;
     listarRecursivo(raiz, listado);
     return listado;
 }
 
-// complejidad de la función destructorRecursivo T(n)
 template <typename T>
 void Arbin<T>::destructorRecursivo(NodoArbin* raiz){
     if (raiz == NULL){
