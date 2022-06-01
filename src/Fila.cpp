@@ -12,7 +12,7 @@ Fila::~Fila()
 {
     //dtor
 }
-
+// Coplejidad de la función longitud T(n)
 unsigned int Fila::longitud(){
    if (primerNodo == NULL)
        return 0;
@@ -26,7 +26,7 @@ unsigned int Fila::longitud(){
    return contador;
 }
 
-
+// complejidad de la función agrFila T(1)
 void Fila::agrFila (int elementonuevo){
     Nodo* aux;
     aux= new Nodo;
@@ -38,7 +38,7 @@ void Fila::agrFila (int elementonuevo){
     return;
 
    }
-
+// complejidad de la función ultimo T(n)
 int Fila::ultimo(){
         assert(!vacia());
         Nodo* cursor= primerNodo;
@@ -47,7 +47,10 @@ int Fila::ultimo(){
             }
             return cursor->elemento;
     }
-
+// complejidad de la función retirar T(n) .
+//Se podría optimizar guardando de alguna manera un puntero al último
+//para no tener que recorrer toda la fila desde el principio.
+// Una forma podría ser guardando en un arreglo paralelo a la Fila la dirección al anterior de cada nodo.
 int Fila::retirar(){
         assert(!vacia());
             Nodo* cursor= primerNodo;
@@ -61,7 +64,7 @@ int Fila::retirar(){
             delete cursor;
             return copia;
 }
-
+// complejidad de la función vacia T(1)
 bool Fila::vacia(){
     if (primerNodo==NULL)
         return true;
