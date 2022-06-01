@@ -2,14 +2,15 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <iostream>
-
-
-Lista::Lista()
+#include <string>
+template <typename T>
+Lista<T>::Lista()
 {
     primerNodo = NULL;
 }
 
-Lista::~Lista()
+template <typename T>
+Lista<T>::~Lista()
 {
     if (primerNodo == NULL)
         return;
@@ -24,7 +25,8 @@ Lista::~Lista()
     delete aux;
 }
 
-unsigned int Lista::longitud(){
+template <typename T>
+unsigned int Lista<T>::longitud(){
     if (primerNodo == NULL)
         return 0;
 
@@ -38,28 +40,31 @@ unsigned int Lista::longitud(){
     return contador;
 }
 
-Nodo* Lista::agregarRecursivo(Nodo* nodo, unsigned int posicion, t_elem elemento){
+template <typename T>
+void Lista<T>::agregarRecursivo(Nodo*& nodo, unsigned int posicion, T elemento){
     if (posicion == 1){
         Nodo * nuevoNodo = new Nodo;
         nuevoNodo->elemento = elemento;
         nuevoNodo->siguiente = nodo;
-        return nuevoNodo;
+        nodo = nuevoNodo;
+        return;
     }
-    nodo->siguiente = agregarRecursivo(nodo->siguiente, posicion -1, elemento);
-    return nodo;
-
+    agregarRecursivo(nodo->siguiente, posicion -1, elemento);
 }
 
-void Lista::agregar(unsigned int posicion, t_elem elemento){
+template <typename T>
+void Lista<T>::agregar(unsigned int posicion, T elemento){
     assert(posicion <= 1 + longitud() && posicion > 0);
-    primerNodo = agregarRecursivo(primerNodo, posicion, elemento);
+    agregarRecursivo(primerNodo, posicion, elemento);
 }
 
-bool Lista::vacia(){
+template <typename T>
+bool Lista<T>::vacia(){
     return longitud() == 0;
 }
 
-int Lista::recuperar(unsigned int posicion){
+template <typename T>
+T Lista<T>::recuperar(unsigned int posicion){
     assert(0 < posicion && posicion <= longitud());
     //como el indice esta en rango los punteros a continuacion no deberian ser nulos
 
@@ -72,8 +77,8 @@ int Lista::recuperar(unsigned int posicion){
     return aux->elemento;
 }
 
-
-bool Lista::eliminarRecursivo(Nodo* & nodo, unsigned int posicion){
+template <typename T>
+bool Lista<T>::eliminarRecursivo(Nodo* & nodo, unsigned int posicion){
     if (nodo == NULL)
         return false;
 
@@ -87,20 +92,24 @@ bool Lista::eliminarRecursivo(Nodo* & nodo, unsigned int posicion){
     return eliminarRecursivo(nodo->siguiente, posicion - 1);
 }
 
-bool Lista::eliminar(unsigned int posicion){
+template <typename T>
+bool Lista<T>::eliminar(unsigned int posicion){
         return eliminarRecursivo(primerNodo, posicion);
 }
 
-
-void Lista::agregarFin(t_elem elemento){
+template <typename T>
+void Lista<T>::agregarFin(T elemento){
     agregar(longitud()+1, elemento);
 }
 
-void Lista::agregarPrincipio(t_elem elemento){
+template <typename T>
+void Lista<T>::agregarPrincipio(T elemento){
     Nodo* nuevo = new Nodo;
     nuevo->elemento = elemento;
     nuevo->siguiente = primerNodo;
     primerNodo = nuevo;
 }
+
+template class Lista<int>;
 
 

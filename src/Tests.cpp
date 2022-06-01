@@ -7,17 +7,17 @@
 #include <iostream>
 
 unsigned int nuevaListaZeroElementos(){
-    Lista * nueva = new Lista;
+    Lista<int> * nueva = new Lista<int>;
     return nueva->longitud();
 }
 bool listaNoVaciaTieneElementos(){
-    Lista * nueva = new Lista;
+    Lista<int> * nueva = new Lista<int>;
     nueva->agregar(1, 22);
     return nueva->longitud() != 0;
 }
 
 unsigned int listaContieneTresElementos(){
-    Lista* nueva = new Lista;
+    Lista<int>* nueva = new Lista<int>;
     nueva->agregar(1, 22);
     nueva->agregar(2, 33);
     nueva->agregar(2,44);
@@ -25,12 +25,12 @@ unsigned int listaContieneTresElementos(){
 }
 
 void fallaAlAgregarEnPosicionCero(){
-    Lista* nueva = new Lista;
+    Lista<int>* nueva = new Lista<int>;
     nueva->agregar(0,-21);
 }
 
 void fallaAlAgregarIndiceMayorLongitud(){
-    Lista* nueva = new Lista;
+    Lista<int>* nueva = new Lista<int>;
     nueva->agregar(1, 31);
     nueva->agregar(2, -31);
     nueva->agregar(2, 222);
@@ -39,18 +39,18 @@ void fallaAlAgregarIndiceMayorLongitud(){
 }
 
 bool listaVaciaEsVacia(){
-    Lista* nueva = new Lista;
+    Lista<int>* nueva = new Lista<int>;
     return nueva->vacia();
 }
 
 bool listaNoVaciaEsVacia(){
-    Lista* nueva = new Lista;
+    Lista<int>* nueva = new Lista<int>;
     nueva->agregar(1, 234);
     return nueva->vacia();
 }
 
 bool recuperaAgregadoAnterior(){
-    Lista*nueva = new Lista;
+    Lista<int>*nueva = new Lista<int>;
     nueva->agregar(1, -31);
     nueva->agregar(2, 32);
     nueva->agregar(3, 22);
@@ -61,7 +61,7 @@ bool recuperaAgregadoAnterior(){
 }
 
 bool recuperaEnOrden(){
-    Lista* nueva = new Lista;
+    Lista<int>* nueva = new Lista<int>;
     nueva->agregar(1, 111);
     nueva->agregar(1, -222);
     nueva->agregar(1, -333);
@@ -73,19 +73,19 @@ bool recuperaEnOrden(){
 }
 
 bool eliminarDeVaciaEsFalse(){
-    Lista* nueva = new Lista;
+    Lista<int>* nueva = new Lista<int>;
     return !nueva->eliminar(1);
 }
 
 bool eliminarConteniendoUnElementoResultaEnVacia(){
-    Lista* nueva = new Lista;
+    Lista<int>* nueva = new Lista<int>;
     nueva->agregar(1, -111);
     nueva->eliminar(1);
     return nueva->vacia();
 }
 
 bool eliminarDecrementaLongitud(){
-    Lista* nueva = new Lista;
+    Lista<int>* nueva = new Lista<int>;
     nueva->agregar(1, -223);
     nueva->agregar(2, -112);
     nueva->agregar(3, -1);
@@ -95,7 +95,7 @@ bool eliminarDecrementaLongitud(){
 }
 
 bool agregarFinAgregarAlFinal(){
-    Lista* nueva = new Lista;
+    Lista<int>* nueva = new Lista<int>;
     nueva->agregarFin(356);
     nueva->agregarFin(2213);
     nueva->agregarFin(-481);
@@ -103,7 +103,7 @@ bool agregarFinAgregarAlFinal(){
 }
 
 bool agregarPrincipioAgregaInicio(){
-    Lista* nueva = new Lista;
+    Lista<int>* nueva = new Lista<int>;
     nueva->agregarPrincipio(111);
     nueva->agregarPrincipio(222);
     nueva->agregarPrincipio(-333);
@@ -113,6 +113,8 @@ bool agregarPrincipioAgregaInicio(){
 }
 
 void testsLista(){
+    std::cout << "Comienzan los tests de Lista\n";
+
     assert(nuevaListaZeroElementos() == 0);
     assert(listaNoVaciaTieneElementos() == true);
     assert(listaContieneTresElementos() == 3);

@@ -12,8 +12,8 @@ template <typename T> class Arbin
         unsigned int cantelmentos();
 	    bool vacio ();
 	    unsigned int profundidad ();
-	    Lista listarFrontera ();
-	    Lista listarArbin();
+	    Lista<T> listarFrontera ();
+	    Lista<T> listarArbin();
 
 
 
@@ -31,8 +31,8 @@ template <typename T> class Arbin
         bool perteneceRecursiva(NodoArbin* raiz, T elemento);
         unsigned int contarRecursivo(NodoArbin* raiz);
         unsigned int profundidadRecursiva(NodoArbin* raiz);
-        Lista listarFronteraRecursiva(NodoArbin* raiz, Lista Frontera);
-        void listarRecursivo(NodoArbin* raiz, Lista & lista);
+        Lista<T> listarFronteraRecursiva(NodoArbin* raiz, Lista<T> Frontera);
+        void listarRecursivo(NodoArbin* raiz, Lista<T> & lista);
         void destructorRecursivo(NodoArbin* raiz);
 
 };

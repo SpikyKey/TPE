@@ -84,12 +84,14 @@ unsigned int Arbin<T>::profundidadRecursiva(NodoArbin* raiz){
         mayor = profundidadIzq;
     return mayor + 1;
 }
+
 template <typename T>
 unsigned int Arbin<T>::profundidad (){
     return profundidadRecursiva(raiz);
 }
+
 template <typename T>
-Lista Arbin<T>::listarFronteraRecursiva(NodoArbin* raiz, Lista frontera){
+Lista<T> Arbin<T>::listarFronteraRecursiva(NodoArbin* raiz, Lista<T> frontera){
     if (raiz->hijoder == NULL &&
         raiz->hijoizq == NULL){
         frontera.agregarPrincipio(raiz->campo);
@@ -102,16 +104,17 @@ Lista Arbin<T>::listarFronteraRecursiva(NodoArbin* raiz, Lista frontera){
         frontera = listarFronteraRecursiva(raiz->hijoder, frontera);
     return frontera;
 }
+
 template <typename T>
-Lista Arbin<T>::listarFrontera (){
-    Lista frontera = new Lista;
+Lista<T> Arbin<T>::listarFrontera (){
+    Lista<T> frontera = new Lista<T>;
     return listarFronteraRecursiva(raiz, frontera);
  }
 
 
  // Lista los nodos del arbol en preorder
  template <typename T>
-void Arbin<T>::listarRecursivo(NodoArbin* raiz, Lista& lista){
+void Arbin<T>::listarRecursivo(NodoArbin* raiz, Lista<T>& lista){
     if (raiz == NULL)
         return;
 
@@ -120,8 +123,8 @@ void Arbin<T>::listarRecursivo(NodoArbin* raiz, Lista& lista){
     listarRecursivo(raiz->hijoder, lista);
 }
 template <typename T>
-Lista Arbin<T>::listarArbin(){
-    Lista listado = new Lista;
+Lista<T> Arbin<T>::listarArbin(){
+    Lista<T> listado = new Lista<T>;
     listarRecursivo(raiz, listado);
     return listado;
 }

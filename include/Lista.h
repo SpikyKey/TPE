@@ -2,25 +2,16 @@
 #define LISTA_H
 
 
-//!!!!!!!!!!!!! CAMBIAR ESTE TYPEDEF Y USAR UN TEMPLATE COMO LO PIDE !!!!!!!!!!!!!!!!!!!!
-typedef int t_elem;
-
-
-typedef struct Nodo{
-            t_elem elemento;
-            struct Nodo * siguiente;
-}Nodo;
-
-class Lista
+template <typename T>class Lista
 {
     public:
         Lista();
         virtual ~Lista();
-        void agregar(unsigned int lugar, t_elem elemento);
+        void agregar(unsigned int lugar, T elemento);
         unsigned int longitud();
-        void agregarFin(t_elem elemento);
-        void agregarPrincipio(t_elem elemento);
-        bool pertenece(t_elem elemento);
+        void agregarFin(T elemento);
+        void agregarPrincipio(T elemento);
+        bool pertenece(T elemento);
 
 
         bool vacia();
@@ -28,13 +19,18 @@ class Lista
         // si el elemento se pudo eliminar retorna true
         // si el elemento no esta retorna false
         bool eliminar(unsigned int posicion);
-        t_elem recuperar(unsigned int posicion);
+        T recuperar(unsigned int posicion);
 
     private:
 
+        typedef struct Nodo{
+                    T elemento;
+                    struct Nodo * siguiente;
+        }Nodo;
+
         Nodo * primerNodo;
 
-        Nodo* agregarRecursivo(Nodo* nodo, unsigned int posicion, t_elem elemento);
+        void agregarRecursivo(Nodo*& nodo, unsigned int posicion, T elemento);
         bool eliminarRecursivo(Nodo* & nodo, unsigned int posicion);
 };
 

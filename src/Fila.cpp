@@ -3,17 +3,28 @@
 #include <assert.h>
 #include <stdlib.h>
 
-Fila::Fila()
+template <typename T>
+Fila<T>::Fila()
 {
     primerNodo = NULL;
 }
 
-Fila::~Fila()
+template <typename T>
+Fila<T>::~Fila()
 {
-    //dtor
+    Nodo* aBorrar = NULL;
+    Nodo* cursor = primerNodo;
+
+    while (cursor->siguiente != NULL){
+        aBorrar = cursor;
+        cursor = cursor->siguiente;
+        delete aBorrar;
+    }
+    delete cursor;
 }
 
-unsigned int Fila::longitud(){
+template <typename T>
+unsigned int Fila<T>::longitud(){
    if (primerNodo == NULL)
        return 0;
 
@@ -26,8 +37,8 @@ unsigned int Fila::longitud(){
    return contador;
 }
 
-
-void Fila::agrFila (int elementonuevo){
+template <typename T>
+void Fila<T>::agregar(T elementonuevo){
     Nodo* aux;
     aux= new Nodo;
     aux-> siguiente = primerNodo->siguiente;
@@ -39,32 +50,32 @@ void Fila::agrFila (int elementonuevo){
 
    }
 
-int Fila::ultimo(){
-        assert(!vacia());
-        Nodo* cursor= primerNodo;
-            while (cursor->siguiente!=NULL){
-                cursor= cursor->siguiente;
-            }
-            return cursor->elemento;
+template <typename T>
+T Fila<T>::primero(){
+    assert(!vacia());
+    Nodo* cursor= primerNodo;
+    while (cursor->siguiente!=NULL){
+        cursor= cursor->siguiente;
     }
-
-int Fila::retirar(){
-        assert(!vacia());
-            Nodo* cursor= primerNodo;
-            Nodo* anteriorcursor;
-            while (cursor->siguiente!=NULL){
-                anteriorcursor=cursor;
-                cursor= cursor->siguiente;
-            }
-            anteriorcursor->siguiente=NULL;
-            int copia=cursor->elemento;
-            delete cursor;
-            return copia;
+    return cursor->elemento;
 }
 
-bool Fila::vacia(){
-    if (primerNodo==NULL)
-        return true;
-    else
-        return false;
+template <typename T>
+T Fila<T>::retirar(){
+    assert(!vacia());
+    Nodo* cursor= primerNodo;
+    Nodo* anteriorcursor;
+    while (cursor->siguiente!=NULL){
+        anteriorcursor=cursor;
+        cursor= cursor->siguiente;
+    }
+    anteriorcursor->siguiente=NULL;
+    int copia=cursor->elemento;
+    delete cursor;
+    return copia;
+}
+
+template <typename T>
+bool Fila<T>::vacia(){
+    return primerNodo == NULL;
 }

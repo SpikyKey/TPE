@@ -1,9 +1,9 @@
 #ifndef TESTS_H
 #define TESTS_H
 
-void testsFila();
+//void testsFila();
 void testsLista();
-void testsArbolBinario();
+//void testsArbolBinario();
 
 
 
