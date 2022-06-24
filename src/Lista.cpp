@@ -7,6 +7,8 @@ template <typename T>
 Lista<T>::Lista()
 {
     primerNodo = NULL;
+    ultimoNodo = NULL;
+    contador = 0;
 }
 
 template <typename T>
@@ -27,16 +29,6 @@ Lista<T>::~Lista()
 
 template <typename T>
 unsigned int Lista<T>::longitud(){
-    if (primerNodo == NULL)
-        return 0;
-
-    unsigned int contador = 0;
-    Nodo * aux = primerNodo;
-    while(aux != NULL){
-        contador++;
-        aux = aux->siguiente;
-    }
-
     return contador;
 }
 
@@ -46,6 +38,11 @@ void Lista<T>::agregarRecursivo(Nodo*& nodo, unsigned int posicion, T elemento){
         Nodo * nuevoNodo = new Nodo;
         nuevoNodo->elemento = elemento;
         nuevoNodo->siguiente = nodo;
+
+        if (nodo == NULL){
+            ultimoNodo = nuevoNodo;
+        }
+        contador++;
         nodo = nuevoNodo;
         return;
     }
@@ -86,28 +83,35 @@ bool Lista<T>::eliminarRecursivo(Nodo* & nodo, unsigned int posicion){
         Nodo* aux = nodo->siguiente;
         delete nodo;
         nodo = aux;
+        contador--;
         return true;
     }
 
+    if (nodo->siguiente == ultimoNodo){
+        ultimoNodo = nodo;
+    }
     return eliminarRecursivo(nodo->siguiente, posicion - 1);
 }
 
 template <typename T>
 bool Lista<T>::eliminar(unsigned int posicion){
+
         return eliminarRecursivo(primerNodo, posicion);
 }
 
 template <typename T>
 void Lista<T>::agregarFin(T elemento){
-    agregar(longitud()+1, elemento);
+    if (vacia() == true){
+        agregarPrincipio(elemento);
+        return;
+    }
+    agregarRecursivo(ultimoNodo->siguiente, 1, elemento);
+    //agregar(longitud()+1, elemento);
 }
 
 template <typename T>
 void Lista<T>::agregarPrincipio(T elemento){
-    Nodo* nuevo = new Nodo;
-    nuevo->elemento = elemento;
-    nuevo->siguiente = primerNodo;
-    primerNodo = nuevo;
+    agregar(1, elemento);
 }
 
 template class Lista<int>;
