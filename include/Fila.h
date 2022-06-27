@@ -1,5 +1,6 @@
 #ifndef FILA_H
 #define FILA_H
+#include "Lista.h"
 
 template <typename T>
 class Fila
@@ -17,14 +18,7 @@ class Fila
 
 
     private:
-        typedef struct Nodo{
-            T elemento;
-            struct Nodo* siguiente;
-
-        }Nodo;
-        // el primerNodo no debe confundirse con el primer elemento de la Fila
-        // en terminos del orden en que se retiran los elementos
-        Nodo* primerNodo;
+        Lista<T>* lista;
 
  };
 

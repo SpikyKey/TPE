@@ -29,7 +29,8 @@ template <typename T>class Lista
         }Nodo;
 
         Nodo * primerNodo;
-
+        Nodo * ultimoNodo;
+        unsigned int contador;
         void agregarRecursivo(Nodo*& nodo, unsigned int posicion, T elemento);
         bool eliminarRecursivo(Nodo* & nodo, unsigned int posicion);
 };

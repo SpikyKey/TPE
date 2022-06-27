@@ -6,76 +6,40 @@
 template <typename T>
 Fila<T>::Fila()
 {
-    primerNodo = NULL;
+    lista = new Lista<T>;
 }
 
 template <typename T>
 Fila<T>::~Fila()
 {
-    Nodo* aBorrar = NULL;
-    Nodo* cursor = primerNodo;
-
-    while (cursor->siguiente != NULL){
-        aBorrar = cursor;
-        cursor = cursor->siguiente;
-        delete aBorrar;
-    }
-    delete cursor;
+    delete lista;
 }
 
 template <typename T>
 unsigned int Fila<T>::longitud(){
-   if (primerNodo == NULL)
-       return 0;
-
-   unsigned int contador = 0;
-   Nodo* aux = primerNodo;
-   while (aux != NULL){
-        contador++;
-        aux = aux->siguiente;
-   }
-   return contador;
+    return lista->longitud();
 }
 
 template <typename T>
-void Fila<T>::agregar(T elementonuevo){
-    Nodo* aux;
-    aux= new Nodo;
-    aux-> siguiente = primerNodo->siguiente;
-    aux-> elemento = primerNodo-> elemento;
-    primerNodo->elemento = elementonuevo;
-    primerNodo->siguiente =aux;
-
-    return;
-
-   }
+void Fila<T>::agregar(T elementoNuevo){
+    lista->agregarPrincipio(elementoNuevo);
+}
 
 template <typename T>
 T Fila<T>::primero(){
     assert(!vacia());
-    Nodo* cursor= primerNodo;
-    while (cursor->siguiente!=NULL){
-        cursor= cursor->siguiente;
-    }
-    return cursor->elemento;
+    return lista->recuperar(lista->longitud());
 }
 
 template <typename T>
 T Fila<T>::retirar(){
     assert(!vacia());
-    Nodo* cursor= primerNodo;
-    Nodo* anteriorcursor;
-    while (cursor->siguiente!=NULL){
-        anteriorcursor=cursor;
-        cursor= cursor->siguiente;
-    }
-    anteriorcursor->siguiente=NULL;
-    int copia=cursor->elemento;
-    delete cursor;
+    T copia = primero();
+    lista->eliminar(lista->longitud());
     return copia;
 }
 
 template <typename T>
 bool Fila<T>::vacia(){
-    return primerNodo == NULL;
+    return lista->vacia();
 }
