@@ -1,33 +1,39 @@
 #ifndef BANCO_H
 #define BANCO_H
 #include "Cliente.h"
-typedef enum{RETIRO = 0, DEPOSITO, TRANSFERENCIA, PAGO} TipoOperacion;
-typedef enum{PERSONA = 0, BANCO, IMPUESTO} TipoDestinatario;
+#include "Fila.h"
+#include "Lista.h"
+
+const int MINIMAS_COLAS = 1;
+const int MAXIMAS_COLAS = 3;
+const int MAXIMAS_ESP = 2;
 class Banco
 {
     public:
         Banco();
         virtual ~Banco();
-        void ingresaCliente(Cliente & nuevoCliente);
-        void atender();
+        void ingresaCliente(Cliente* nuevoCliente);
+        Cliente* atender();
+        Cliente* atender(TipoOperacion operacion, bool esCliente);
         void abrirColaConCriterio(TipoOperacion op, bool esCliente);
-        void cerrarColaConCriterio();
+        bool cerrarColaConCriterio(TipoOperacion op, bool esCliente);
         void listarOperaciones(unsigned int minimo, unsigned int maximo);
 
-    protected:
+        unsigned int colasAbiertas();
+        bool existeColaConCriterio(TipoOperacion op, bool esCliente);
 
     private:
-        typedef struct colaEspecial{
+        typedef struct ColaEspecial{
             TipoOperacion operacion;
             bool esCliente;
-            Fila<Cliente> * cola;
-        }colaEspecial;
+            Fila<Cliente*> * cola;
+        }ColaEspecial;
 
-        Fila<Cliente>* colaGeneral;
+        Fila<Cliente*>* colaGeneral;
 
-        Lista<colaEspecial>* colasEspeciales;
+        Lista<ColaEspecial>* colasEspeciales;
 
-        Lista<Cliente>* historial;
+        Lista<Cliente*>* historial;
 
 };
 
