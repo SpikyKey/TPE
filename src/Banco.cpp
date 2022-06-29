@@ -1,5 +1,6 @@
 #include "../include/Banco.h"
 
+using namespace std;
 Banco::Banco()
 {
     colaGeneral = new Fila<Cliente*>;
@@ -55,8 +56,11 @@ void Banco::ingresaCliente(Cliente* nuevoCliente)
 
 Cliente* Banco::atender(){
     Cliente* cliente = NULL;
-    if (!colaGeneral->vacia())
-        Cliente* cliente = colaGeneral->retirar();
+    if (!colaGeneral->vacia()){
+        cliente = colaGeneral->retirar();
+        historial->agregarPrincipio(cliente);
+    }
+
     return cliente;
 }
 Cliente* Banco::atender(TipoOperacion operacion, bool esCliente){
@@ -92,8 +96,24 @@ void Banco::abrirColaConCriterio(TipoOperacion op, bool esCliente){
         nuevaCola.esCliente = esCliente;
         nuevaCola.operacion = op;
         nuevaCola.cola = new Fila<Cliente*>;
+
+        Fila<Cliente*>* auxGeneral = new Fila<Cliente*>;
+
+        Cliente* cliente;
+        while (!colaGeneral->vacia()){
+            cliente = colaGeneral->retirar();
+            if (cliente->getOperacion()== op && cliente->getEsCliente() == esCliente){
+                nuevaCola.cola->agregar(cliente);
+            }else{
+                auxGeneral->agregar(cliente);
+            }
+        }
+        delete colaGeneral; // innecesario?
+        colaGeneral = auxGeneral;
         colasEspeciales->agregarPrincipio(nuevaCola);
     }
+
+
 }
 
 bool Banco::cerrarColaConCriterio(TipoOperacion op, bool esCliente){
@@ -121,17 +141,20 @@ void Banco::listarOperaciones(unsigned int minimo, unsigned int maximo){
     unsigned int contador = 0;
     unsigned int suma = 0;
 
-    cout << "Los clientes que realizaron operaciones entre " << minimo << " y " << maximo " :" << endl;
-    for (int i = 1; i <= historial.longitud(); i++){
-        cliente = historial.recuperar(i);
+    cout << "Los clientes que realizaron operaciones entre " << minimo << " y " << maximo << " :" << endl;
+    for (int i = 1; i <= historial->longitud(); i++){
+        cliente = historial->recuperar(i);
         monto = cliente->getMonto();
         if (minimo <= monto && monto <= maximo){
             contador++;
-            suma += cliente->gerEdad();
+            suma += cliente->getEdad();
+            cout << endl;
             cliente->imprimir();
         }
     }
-    cout << "Estos clientes tienen una edad promedio de: " << suma/contador << endl;
+
+    if (contador != 0)
+        cout << "Estos clientes tienen una edad promedio de: " << suma/contador << endl;
 }
 
 unsigned int Banco::colasAbiertas(){
@@ -149,3 +172,4 @@ bool Banco::existeColaConCriterio(TipoOperacion op, bool esCliente){
     }
     return existe;
 }
+

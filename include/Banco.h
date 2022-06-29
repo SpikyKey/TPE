@@ -4,9 +4,14 @@
 #include "Fila.h"
 #include "Lista.h"
 
-const int MINIMAS_COLAS = 1;
-const int MAXIMAS_COLAS = 3;
 const int MAXIMAS_ESP = 2;
+
+const int MINIMAS_COLAS = 1;
+const int MAXIMAS_COLAS = 1 + MAXIMAS_ESP;
+
+
+
+
 class Banco
 {
     public:

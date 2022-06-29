@@ -2,6 +2,7 @@
 #define CLIENTE_H
 #include "string"
 #include "iostream"
+#include <assert.h>
 
 
 typedef enum{RETIRO = 1, DEPOSITO, TRANSFERENCIA, PAGO} TipoOperacion;

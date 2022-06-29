@@ -13,7 +13,7 @@ typedef enum{INGRESA = 1, ATENDER, ABRIR_COLA, CERRAR_COLA, LISTAR, SALIR} Opcio
 
 Opcion menu(void){
     unsigned int seleccion = 0;
-    cout << "Opciones:" << endl;
+    cout << endl << "Opciones:" << endl;
     cout << "1) Ingresar un nuevo cliente" << endl;
     cout << "2) Atender al proximo cliente" << endl;
     cout << "3) Abrir cola con criterio" << endl;
@@ -77,7 +77,7 @@ int main()
 
 
             unsigned int destinatario = 0;
-            cout << "Ingrese el destinatario: ";
+            cout << "Ingrese el destinatario: " << endl;
             cout << "1) Persona" << endl;
             cout << "2) Banco" << endl;
             cout << "3) Impuesto" << endl;
@@ -107,16 +107,20 @@ int main()
                 if (atendido == NULL){
                     cout << "La cola general esta vacia" << endl;
                 }else{
+                    cout << "Datos del cliente atendido:" << endl;
                     atendido->imprimir();
                 }
 
             }else{
                 cout << "Ingrese el criterio: " << endl;
+                bool esClienteCriterio;
+                TipoOperacion operacionCriterio;
                 do
                 {
-                    TipoOperacion operacionCriterio = ingresarOperacion();
-                    bool esClienteCriterio = ingresarEsCliente();
-                }while(!banco->existeColaConCriterio(operacionCriterio, esClienteCriterio))
+                    operacionCriterio = ingresarOperacion();
+                    esClienteCriterio = ingresarEsCliente();
+                }while(!banco->existeColaConCriterio(operacionCriterio, esClienteCriterio));
+
                 atendido = banco->atender(operacionCriterio, esClienteCriterio);
                 if (atendido == NULL){
                     cout << "Esta cola especial esta vacia" << endl;
@@ -129,16 +133,18 @@ int main()
 
         case ABRIR_COLA:
             {
-            if (banco->colasAbiertas == MAXIMAS_COLAS){
-                cout << "Ingrese el Criterio:" << endl;
+            if (banco->colasAbiertas() != MAXIMAS_COLAS){
+
+                TipoOperacion operacionAbrir;
+                bool esClienteAbrir;
                 do
                 {
-                    TipoOperacion operacionAbrir = ingresarOperacion();
-                    bool esClienteAbrir = ingresarEsCliente();
-                }while (banco->existeColaConCriterio(operacionAbrir, esCLienteAbrir))
+                    operacionAbrir = ingresarOperacion();
+                    esClienteAbrir = ingresarEsCliente();
+                }while (banco->existeColaConCriterio(operacionAbrir, esClienteAbrir));
 
                 banco->abrirColaConCriterio(operacionAbrir, esClienteAbrir);
-                cout << "Abierta una nueva cola especial" endl;
+                cout << "Abierta una nueva cola especial" << endl;
 
             }else{
                 cout << "Ya estan abiertas todas las colas posibles" << endl;
@@ -152,11 +158,14 @@ int main()
                 cout << "No hay colas especiales abiertas" << endl;
             }else{
                 cout << "Ingrese el Criterio:" << endl;
+
+                TipoOperacion operacionCerrar;
+                bool esClienteCerrar;
                 do
                 {
-                    TipoOperacion operacionCerrar = ingresarOperacion();
-                    bool esClienteCerrar = ingresarEsCliente();
-                }while (banco->existeColaConCriterio(operacionCerrar, esCLienteCerrar))
+                    operacionCerrar = ingresarOperacion();
+                    esClienteCerrar = ingresarEsCliente();
+                }while (!banco->existeColaConCriterio(operacionCerrar, esClienteCerrar));
 
                 if (banco->cerrarColaConCriterio(operacionCerrar, esClienteCerrar) == true){
                     cout << "Se cerro una cola especial" << endl;

@@ -1,6 +1,8 @@
 #include "../include/Cliente.h"
 
-Cliente::Cliente(std::string nombre, unsigned int edad, TipoOperacion operacion,
+
+using namespace std;
+Cliente::Cliente(string nombre, unsigned int edad, TipoOperacion operacion,
                 TipoDestinatario destinatario, unsigned int monto, bool esCliente)
 {
     this->nombre = nombre;
@@ -13,7 +15,7 @@ Cliente::Cliente(std::string nombre, unsigned int edad, TipoOperacion operacion,
 
 Cliente::~Cliente()
 {
-
+    //delete string;
 }
 
 TipoOperacion Cliente::getOperacion(){
@@ -33,20 +35,20 @@ unsigned int Cliente::getEdad(){
 }
 
 void Cliente::imprimir(){
-    std::cout << "Nombre: " << nombre << endl;
-    std::cout << "Edad: " << edad << endl;
-    std::cout << "Operacion: " << operacionAString(operacion) << endl;
-    std::cout << "Destinatario: " << destinatarioAString(destinatario) << endl;
-    std::cout << "Monto: " << monto << " Pesos" << endl;
+    cout << "Nombre: " << nombre << endl;
+    cout << "Edad: " << edad << endl;
+    cout << "Operacion: " << operacionAString(operacion) << endl;
+    cout << "Destinatario: " << destinatarioAString(destinatario) << endl;
+    cout << "Monto: " << monto << " Pesos" << endl;
     if (esCliente){
-        std::cout << "Cliente: Si" << endl;
+        cout << "Cliente: Si" << endl;
     }else{
-        std::cout << "Cliente: No" << endl;
+        cout << "Cliente: No" << endl;
     }
 }
 
 
-
+// funciones auxiliares de impresion
 std::string operacionAString(TipoOperacion op){
     switch (op){
     case RETIRO:

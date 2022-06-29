@@ -1,8 +1,11 @@
+
+/* IMPLEMENTACION EN EL .H
 #include "../include/Lista.h"
 #include <stdlib.h>
 #include <assert.h>
 #include <iostream>
 #include <string>
+
 template <typename T>
 Lista<T>::Lista()
 {
@@ -106,7 +109,6 @@ void Lista<T>::agregarFin(T elemento){
         return;
     }
     agregarRecursivo(ultimoNodo->siguiente, 1, elemento);
-    //agregar(longitud()+1, elemento);
 }
 
 template <typename T>
@@ -115,5 +117,8 @@ void Lista<T>::agregarPrincipio(T elemento){
 }
 
 template class Lista<int>;
+
+
+*/
 
 
